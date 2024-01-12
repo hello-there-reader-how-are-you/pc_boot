@@ -6,7 +6,8 @@ from discord.ext import commands
 from discord import Intents
 import RPi.GPIO as GPIO
 
-DEFAULT_CHANNEL = ""
+import my_secrests.py
+
 PC_RELAY_PIN = 17
 REBOOT_RELAY_PIN = 27
 
@@ -107,4 +108,4 @@ async def fif_fif(ctx):
 
 
 # Start the bot
-bot.run("")
+bot.run(str(TOKEN))
