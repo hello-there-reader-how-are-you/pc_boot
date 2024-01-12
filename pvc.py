@@ -6,7 +6,7 @@ from discord.ext import commands
 from discord import Intents
 import RPi.GPIO as GPIO
 
-import my_secrests.py
+from my_secrests.py import *
 
 PC_RELAY_PIN = 17
 REBOOT_RELAY_PIN = 27
