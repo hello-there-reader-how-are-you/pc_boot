@@ -31,22 +31,22 @@ async def on_ready():
 @bot.command()
 async def list(ctx):
     await ctx.send('notes: prefix is !, "list" command lists possible commands')
-    await ctx.send('cmd list: list = (lists cmds), pc state, pc on, pc off, pc set_state, pc toggle, pc restart, pc 50/50= (50%% chance of turing off pc)')
+    await ctx.send('cmd list: list = (lists cmds), pc_state, pc_on, pc_off, pc_set_state, pc_toggle, pc_restart, pc_50/50= (50%% chance of turing off pc)')
 
 
-@bot.command(name='pc on')
+@bot.command(name='pc_on')
 async def on(ctx):
     # Turn on the PC relay
     GPIO.output(PC_RELAY_PIN, GPIO.HIGH)
     await ctx.send('pc is now on')
 
-@bot.command(name='pc off')
+@bot.command(name='pc_off')
 async def off(ctx):
     # Turn off the PC relay
     GPIO.output(PC_RELAY_PIN, GPIO.LOW)
     await ctx.send('pc is now off')
 
-@bot.command(name='pc set_state')
+@bot.command(name='pc_set_state')
 async def pc_set_state(ctx, new_state: str):
     # Redefine the state of the PC relay based on user input
     if new_state.lower() == 'on':
@@ -58,7 +58,7 @@ async def pc_set_state(ctx, new_state: str):
     else:
         await ctx.send('Invalid state. Please use "on" or "off".')
 
-@bot.command(name='pc toggle')
+@bot.command(name='pc_toggle')
 async def toggle(ctx):
     # Toggle the state of the PC relay
     current_state = GPIO.input(PC_RELAY_PIN)
@@ -71,7 +71,7 @@ async def toggle(ctx):
     else:
         await ctx.send('PC turned OFF!')
 
-@bot.command(name='pc restart')
+@bot.command(name='pc_restart')
 async def restart(ctx):
     await ctx.send('Rebooting begin')
     # Activate the reboot relay for a short duration
@@ -82,7 +82,7 @@ async def restart(ctx):
 
 
 
-@bot.command(name='pc state')
+@bot.command(name='pc_state')
 async def pc_state(ctx):
     # Get the current state of the PC relay
     current_state = GPIO.input(PC_RELAY_PIN)
@@ -90,7 +90,7 @@ async def pc_state(ctx):
 
 
 
-@bot.command(name='pc 50/50')
+@bot.command(name='pc_50/50')
 async def fif_fif(ctx):
     current_state = GPIO.input(PC_RELAY_PIN)
 
