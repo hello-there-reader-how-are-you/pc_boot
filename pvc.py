@@ -13,8 +13,7 @@ REBOOT_RELAY_PIN = 15
 
 current_state = 0
 
-HIGH = 0
-LOW = 1
+
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(PC_RELAY_PIN, GPIO.OUT)
 GPIO.setup(REBOOT_RELAY_PIN, GPIO.OUT)
@@ -23,10 +22,11 @@ GPIO.setup(REBOOT_RELAY_PIN, GPIO.OUT)
 GPIO.output(PC_RELAY_PIN, GPIO.LOW)
 GPIO.output(REBOOT_RELAY_PIN, GPIO.LOW)
 
-def toggle(pin):
+def toggle(pin,):
     GPIO.output(pin, GPIO.HIGH)
     time.sleep(5)
     GPIO.output(pin, GPIO.LOW)
+    current_state = not current_state
 
 # Create the Discord bot
 intents = Intents.all()
@@ -80,19 +80,13 @@ async def pc_set_state(ctx, new_state: str):
 @bot.command(name='pc_restart')
 async def restart(ctx):
     await ctx.send('Rebooting begin')
-    # Activate the reboot relay for a short duration
-    GPIO.output(REBOOT_RELAY_PIN, GPIO.HIGH)
-    time.sleep(4)  # Adjust the sleep duration as needed
-    GPIO.output(REBOOT_RELAY_PIN, GPIO.LOW)
+    toggle
     await ctx.send('Rebooting end')
 
 @bot.command(name='pc_reboot')
 async def restart(ctx):
     await ctx.send('Rebooting begin')
-    # Activate the reboot relay for a short duration
-    GPIO.output(REBOOT_RELAY_PIN, GPIO.HIGH)
-    time.sleep(4)  # Adjust the sleep duration as needed
-    GPIO.output(REBOOT_RELAY_PIN, GPIO.LOW)
+    toggle
     await ctx.send('Rebooting end')
 
 
