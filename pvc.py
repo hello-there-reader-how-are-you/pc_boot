@@ -20,7 +20,9 @@ GPIO.setup(REBOOT_RELAY_PIN, GPIO.OUT)
 
 GPIO.output(PC_RELAY_PIN, GPIO.LOW)
 GPIO.output(REBOOT_RELAY_PIN, GPIO.LOW)
-
+time.sleep(0.5)
+GPIO.output(PC_RELAY_PIN, GPIO.LOW)
+GPIO.output(REBOOT_RELAY_PIN, GPIO.LOW)
 
 def toggle(pin):
     GPIO.output(pin, GPIO.HIGH)
