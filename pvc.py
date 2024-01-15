@@ -17,6 +17,10 @@ GPIO.setup(PC_RELAY_PIN, GPIO.OUT)
 GPIO.setup(REBOOT_RELAY_PIN, GPIO.OUT)
 
 
+GPIO.output(PC_RELAY_PIN, GPIO.LOW)
+GPIO.output(REBOOT_RELAY_PIN, GPIO.LOW)
+
+
 # Create the Discord bot
 intents = Intents.all()
 bot = commands.Bot(command_prefix="!", intents=intents)
