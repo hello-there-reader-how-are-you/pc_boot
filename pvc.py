@@ -12,7 +12,8 @@ PC_RELAY_PIN = 14
 REBOOT_RELAY_PIN = 15
 
 current_state = 0
-
+delay = 3.4
+reset_delay = 4.5
 
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(PC_RELAY_PIN, GPIO.OUT)
@@ -22,10 +23,10 @@ GPIO.setup(REBOOT_RELAY_PIN, GPIO.OUT)
 GPIO.output(PC_RELAY_PIN, GPIO.LOW)
 GPIO.output(REBOOT_RELAY_PIN, GPIO.LOW)
 
-def toggle(pin):
+def toggle(pin, delay):
     global current_state
     GPIO.output(pin, GPIO.HIGH)
-    time.sleep(5)
+    time.sleep(delay)
     GPIO.output(pin, GPIO.LOW)
     current_state = not current_state
 
@@ -51,7 +52,7 @@ async def on(ctx):
     if not current_state:
         # Turn on the PC relay
         await ctx.send('pc is now on')
-        toggle(PC_RELAY_PIN)
+        toggle(PC_RELAY_PIN, delay)
     else:
         await ctx.send('pc is already on')
 
@@ -60,7 +61,7 @@ async def off(ctx):
     if current_state:
         # Turn on the PC relay
         await ctx.send('pc is now off')
-        toggle(PC_RELAY_PIN)
+        toggle(PC_RELAY_PIN, delay)
     else:
         await ctx.send('pc is already off')
 
@@ -81,13 +82,13 @@ async def pc_set_state(ctx, new_state: str):
 @bot.command(name='pc_restart')
 async def restart(ctx):
     await ctx.send('Rebooting begin')
-    toggle(REBOOT_RELAY_PIN)
+    toggle(REBOOT_RELAY_PIN, reset_delay)
     await ctx.send('Rebooting end')
 
 @bot.command(name='pc_reboot')
 async def restart(ctx):
     await ctx.send('Rebooting begin')
-    toggle(REBOOT_RELAY_PIN)
+    toggle(REBOOT_RELAY_PIN, reset_delay)
     await ctx.send('Rebooting end')
 
 
