@@ -44,7 +44,7 @@ async def on_ready():
 @bot.command()
 async def list(ctx):
     await ctx.send('notes: prefix is !, "list" command lists possible commands')
-    await ctx.send('cmd list: list = (lists cmds), pc_state, pc_on, pc_off, pc_set_state, pc_restart, pc_50/50= (50%% chance of turing off pc)')
+    await ctx.send('cmd list: list = (lists cmds), pc_state, pc_on, pc_off, pc_set_state, pc_restart, pc_toggle, pc_50/50= (50%% chance of turing off pc)')
 
 
 @bot.command(name='pc_on')
@@ -111,6 +111,11 @@ async def fif_fif(ctx):
     else:
         await ctx.send('PC survives the 50/50!')
 
+
+@bot.command(name='pc_toggle')
+async def on(ctx):
+    toggle(PC_RELAY_PIN, delay)
+    await ctx.send('PC has been toggled')
 
 # Start the bot
 bot.run(str(TOKEN))
