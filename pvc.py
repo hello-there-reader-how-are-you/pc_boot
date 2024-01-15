@@ -22,7 +22,7 @@ GPIO.setup(REBOOT_RELAY_PIN, GPIO.OUT)
 GPIO.output(PC_RELAY_PIN, GPIO.LOW)
 GPIO.output(REBOOT_RELAY_PIN, GPIO.LOW)
 
-def toggle(pin,):
+def toggle(pin):
     GPIO.output(pin, GPIO.HIGH)
     time.sleep(5)
     GPIO.output(pin, GPIO.LOW)
@@ -80,13 +80,13 @@ async def pc_set_state(ctx, new_state: str):
 @bot.command(name='pc_restart')
 async def restart(ctx):
     await ctx.send('Rebooting begin')
-    toggle
+    toggle(REBOOT_RELAY_PIN)
     await ctx.send('Rebooting end')
 
 @bot.command(name='pc_reboot')
 async def restart(ctx):
     await ctx.send('Rebooting begin')
-    toggle
+    toggle(REBOOT_RELAY_PIN)
     await ctx.send('Rebooting end')
 
 
