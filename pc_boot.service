@@ -1,0 +1,18 @@
+#sudo cp pc_boot.service /etc/systemd/system
+#sudo systemctl daemon-reload
+#sudo systemctl enable pc_boot.service
+#sudo systemctl start my-service.service
+
+[Unit]
+Description=My python code for pc_boot
+After=network.target
+
+[Service]
+Type=idle
+ExecStart=/usr/bin/python3 /home/roundabout/pc_boot/pvc.py
+User=root
+Group=root
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
