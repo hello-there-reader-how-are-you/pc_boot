@@ -50,8 +50,8 @@ async def list(ctx):
 async def on(ctx):
     if not current_state:
         # Turn on the PC relay
-        toggle(PC_RELAY_PIN)
         await ctx.send('pc is now on')
+        toggle(PC_RELAY_PIN)
     else:
         await ctx.send('pc is already on')
 
@@ -59,8 +59,8 @@ async def on(ctx):
 async def off(ctx):
     if current_state:
         # Turn on the PC relay
-        toggle(PC_RELAY_PIN)
         await ctx.send('pc is now off')
+        toggle(PC_RELAY_PIN)
     else:
         await ctx.send('pc is already off')
 
