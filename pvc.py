@@ -67,6 +67,7 @@ async def off(ctx):
 
 @bot.command(name='pc_set_state')
 async def pc_set_state(ctx, new_state: str):
+    global current_state
     # Redefine the state of the PC relay based on user input
     if new_state.lower() == 'on':
         current_state = 1
