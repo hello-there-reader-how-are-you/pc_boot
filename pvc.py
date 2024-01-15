@@ -20,14 +20,14 @@ GPIO.setup(PC_RELAY_PIN, GPIO.OUT)
 GPIO.setup(REBOOT_RELAY_PIN, GPIO.OUT)
 
 
-GPIO.output(PC_RELAY_PIN, GPIO.LOW)
-GPIO.output(REBOOT_RELAY_PIN, GPIO.LOW)
+GPIO.output(PC_RELAY_PIN, GPIO.HIGH)
+GPIO.output(REBOOT_RELAY_PIN, GPIO.HIGH)
 
 def toggle(pin, delay):
     global current_state
-    GPIO.output(pin, GPIO.HIGH)
-    time.sleep(delay)
     GPIO.output(pin, GPIO.LOW)
+    time.sleep(delay)
+    GPIO.output(pin, GPIO.HIGH)
     current_state = not current_state
 
 # Create the Discord bot
