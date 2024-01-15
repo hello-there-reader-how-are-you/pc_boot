@@ -14,6 +14,7 @@ REBOOT_RELAY_PIN = 15
 current_state = 0
 delay = 3.4
 reset_delay = 3
+hold_delay = 12
 
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(PC_RELAY_PIN, GPIO.OUT)
@@ -44,7 +45,7 @@ async def on_ready():
 @bot.command()
 async def list(ctx):
     await ctx.send('notes: prefix is !, "list" command lists possible commands')
-    await ctx.send('cmd list: list = (lists cmds), pc_state, pc_on, pc_off, pc_set_state, pc_restart, pc_toggle, pc_50/50= (50%% chance of turing off pc)')
+    await ctx.send('cmd list: list = (lists cmds), pc_state, pc_on, pc_off, pc_set_state, pc_restart, pc_toggle, pc_hold, pc_50/50= (50%% chance of turing off pc)')
 
 
 @bot.command(name='pc_on')
@@ -117,6 +118,12 @@ async def fif_fif(ctx):
 async def on(ctx):
     toggle(PC_RELAY_PIN, delay)
     await ctx.send('PC has been toggled')
+
+@bot.command(name='pc_hold')
+async def on(ctx):
+    toggle(PC_RELAY_PIN, hold_delay)
+    await ctx.send('PC has been toggled')
+
 
 # Start the bot
 bot.run(str(TOKEN))
