@@ -11,6 +11,7 @@ from my_secrets import *
 PC_RELAY_PIN = 14
 REBOOT_RELAY_PIN = 15
 
+global current_state
 current_state = 0
 
 
@@ -42,7 +43,7 @@ async def on_ready():
 @bot.command()
 async def list(ctx):
     await ctx.send('notes: prefix is !, "list" command lists possible commands')
-    await ctx.send('cmd list: list = (lists cmds), pc_state, pc_on, pc_off, pc_set_state, pc_toggle, pc_restart, pc_50/50= (50%% chance of turing off pc)')
+    await ctx.send('cmd list: list = (lists cmds), pc_state, pc_on, pc_off, pc_set_state, pc_restart, pc_50/50= (50%% chance of turing off pc)')
 
 
 @bot.command(name='pc_on')
