@@ -11,7 +11,6 @@ from my_secrets import *
 PC_RELAY_PIN = 14
 REBOOT_RELAY_PIN = 15
 
-global current_state
 current_state = 0
 
 
@@ -24,6 +23,7 @@ GPIO.output(PC_RELAY_PIN, GPIO.LOW)
 GPIO.output(REBOOT_RELAY_PIN, GPIO.LOW)
 
 def toggle(pin):
+    global current_state
     GPIO.output(pin, GPIO.HIGH)
     time.sleep(5)
     GPIO.output(pin, GPIO.LOW)
