@@ -13,7 +13,7 @@ REBOOT_RELAY_PIN = 15
 
 current_state = 0
 delay = 3.4
-reset_delay = 4.5
+reset_delay = 3
 
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(PC_RELAY_PIN, GPIO.OUT)
