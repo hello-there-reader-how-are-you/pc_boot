@@ -8,8 +8,8 @@ import RPi.GPIO as GPIO
 
 from my_secrets import *
 
-PC_RELAY_PIN = 17
-REBOOT_RELAY_PIN = 27
+PC_RELAY_PIN = 14
+REBOOT_RELAY_PIN = 15
 
 
 GPIO.setmode(GPIO.BCM)
